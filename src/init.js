@@ -3,9 +3,12 @@ export default function initPage() {
 
   body.innerHTML = `<header>
     <form action="">
-        <label for="search"></label>
-        <input type="text" name="search" id="search" />
-        <button type="submit">Search</button>
+        <div id="searchContiner">
+            <label for="search"></label>
+            <input type="text" name="search" id="search" />
+            <button type="submit">Search</button>
+        </div>
+        <span class="searchError">Invalid location</span>
     </form>
 </header>
 <main>

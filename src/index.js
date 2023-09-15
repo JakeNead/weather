@@ -9,20 +9,14 @@ const location = document.querySelector("#location");
 const condition = document.querySelector("#condition");
 const temp = document.querySelector("#temp");
 const wind = document.querySelector("#wind");
+const searchError = document.querySelector(".searchError");
 
 async function fetchWeatherObj(input) {
-  let obj;
-  try {
-    const api = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=f8f39e42a5384acc86121758230509&q=${input}&aqi=no`,
-      { mode: "cors" },
-    );
-    const info = await api.json();
-    obj = await info;
-  } catch (err) {
-    console.log(err);
-  }
-  return obj;
+  const api = await fetch(
+    `http://api.weatherapi.com/v1/current.json?key=f8f39e42a5384acc86121758230509&q=${input}&aqi=no`,
+    { mode: "cors" },
+  );
+  return api.json();
 }
 
 const parseWeatherInfo = async (obj) => ({
@@ -48,11 +42,14 @@ async function updateWeather(input) {
     updateDom(parsedInfo);
   } catch (error) {
     console.log(error);
+    searchError.classList.add("visible");
   }
 }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  console.log(searchError.classList);
+  searchError.classList.remove("visible");
   updateWeather(search.value);
 });
 
@@ -62,4 +59,3 @@ updateWeather("estacada, oregon");
 //   add a button?
 //   store current search in variable?
 // catch error notification, and stop process
-//

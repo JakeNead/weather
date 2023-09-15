@@ -1,3 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: hsl(0, 0%, 70%);
+}
+header,
+main {
+  display: flex;
+  justify-content: center;
+}
+
 header {
-  color: red;
+  margin: 2rem;
+}
+
+input,
+button {
+  padding: 3px;
+}
+
+main {
+}
+
+article {
+  width: 300px;
+  background-color: hsl(0, 0%, 90%);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+
+h2 {
+}
+
+#forecastContainer > * {
+  margin: 0.5rem 0;
+}
+
+.searchError {
+  visibility: hidden;
+  background-color: hsl(0, 96%, 72%);
+  padding: 0 3px 2px 3px;
+  border-radius: 0 0 5px 5px;
+}
+
+.visible {
+  visibility: visible;
 }
