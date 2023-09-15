@@ -1,4 +1,5 @@
 import initPage from "./init";
+import "./style.css";
 
 initPage();
 
@@ -44,8 +45,7 @@ async function updateWeather(input) {
   try {
     const weatherObj = await fetchWeatherObj(input);
     const parsedInfo = await parseWeatherInfo(weatherObj);
-    const updatePage = await updateDom(parsedInfo);
-    updatePage();
+    updateDom(parsedInfo);
   } catch (error) {
     console.log(error);
   }
@@ -56,7 +56,10 @@ form.addEventListener("submit", (e) => {
   updateWeather(search.value);
 });
 
+updateWeather("estacada, oregon");
+
 // create mph/kph/c/f conversion button
 //   add a button?
 //   store current search in variable?
 // catch error notification, and stop process
+//
