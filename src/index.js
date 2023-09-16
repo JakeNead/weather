@@ -10,6 +10,11 @@ const condition = document.querySelector("#condition");
 const temp = document.querySelector("#temp");
 const wind = document.querySelector("#wind");
 const searchError = document.querySelector(".searchError");
+const toggleContainer = document.querySelector("#toggleContainer");
+const unitToggle = document.querySelector("#unitToggle");
+
+let units = "f";
+let currentWeather;
 
 async function fetchWeatherObj(input) {
   const api = await fetch(
@@ -31,14 +36,20 @@ const parseWeatherInfo = async (obj) => ({
 const updateDom = (obj) => {
   location.textContent = obj.location;
   condition.textContent = obj.condition;
-  temp.textContent = obj.tempF;
-  wind.textContent = obj.windMph;
+  if (units === "f") {
+    temp.textContent = `Temperature ${obj.tempF} °F`;
+    wind.textContent = `Wind speed ${obj.windMph} mph`;
+  } else {
+    temp.textContent = `Temperature ${obj.tempC} °C`;
+    wind.textContent = `Wind speed ${obj.windKph} kph`;
+  }
 };
 
 async function updateWeather(input) {
   try {
     const weatherObj = await fetchWeatherObj(input);
     const parsedInfo = await parseWeatherInfo(weatherObj);
+    currentWeather = parsedInfo;
     updateDom(parsedInfo);
   } catch (error) {
     console.log(error);
@@ -48,14 +59,24 @@ async function updateWeather(input) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(searchError.classList);
   searchError.classList.remove("visible");
   updateWeather(search.value);
 });
 
-updateWeather("estacada, oregon");
+unitToggle.addEventListener("checked", () => {});
+
+toggleContainer.addEventListener("click", () => {
+  if (units === "f") {
+    units = "c";
+    updateDom(currentWeather);
+  } else {
+    units = "f";
+    updateDom(currentWeather);
+  }
+});
+
+updateWeather("bishop, california");
 
 // create mph/kph/c/f conversion button
 //   add a button?
 //   store current search in variable?
-// catch error notification, and stop process

@@ -19,6 +19,9 @@ export default function initPage() {
         <p id="temp"></p>
         <p id="wind"></p>
         </div>
+        <div id="toggleContainer">
+            <input type="checkbox" id="unitToggle"> 
+        </div>
     </article>
 </main>`;
 }
