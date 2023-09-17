@@ -37,11 +37,11 @@ const updateDom = (obj) => {
   location.textContent = obj.location;
   condition.textContent = obj.condition;
   if (units === "f") {
-    temp.textContent = `Temperature ${obj.tempF} °F`;
-    wind.textContent = `Wind speed ${obj.windMph} mph`;
+    temp.textContent = `Temperature: ${obj.tempF} °F`;
+    wind.textContent = `Wind speed: ${obj.windMph} mph`;
   } else {
-    temp.textContent = `Temperature ${obj.tempC} °C`;
-    wind.textContent = `Wind speed ${obj.windKph} kph`;
+    temp.textContent = `Temperature: ${obj.tempC} °C`;
+    wind.textContent = `Wind speed: ${obj.windKph} kph`;
   }
 };
 
@@ -63,9 +63,8 @@ form.addEventListener("submit", (e) => {
   updateWeather(search.value);
 });
 
-unitToggle.addEventListener("checked", () => {});
-
-toggleContainer.addEventListener("click", () => {
+unitToggle.addEventListener("change", () => {
+  console.log(unitToggle.checked);
   if (units === "f") {
     units = "c";
     updateDom(currentWeather);
@@ -76,7 +75,3 @@ toggleContainer.addEventListener("click", () => {
 });
 
 updateWeather("bishop, california");
-
-// create mph/kph/c/f conversion button
-//   add a button?
-//   store current search in variable?

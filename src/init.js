@@ -15,12 +15,13 @@ export default function initPage() {
     <article>
         <h2 id="location"></h2>
         <div id="forecastContainer">
-        <p id="condition"></p>
-        <p id="temp"></p>
-        <p id="wind"></p>
+            <p id="condition"></p>
+            <p id="temp"></p>
+            <p id="wind"></p>
         </div>
         <div id="toggleContainer">
-            <input type="checkbox" id="unitToggle"> 
+            <input type="checkbox" id="unitToggle">
+            <div class="unit"></div>
         </div>
     </article>
 </main>`;
