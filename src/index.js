@@ -10,7 +10,6 @@ const condition = document.querySelector("#condition");
 const temp = document.querySelector("#temp");
 const wind = document.querySelector("#wind");
 const searchError = document.querySelector(".searchError");
-const toggleContainer = document.querySelector("#toggleContainer");
 const unitToggle = document.querySelector("#unitToggle");
 
 let units = "f";
@@ -18,7 +17,7 @@ let currentWeather;
 
 async function fetchWeatherObj(input) {
   const api = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=f8f39e42a5384acc86121758230509&q=${input}&aqi=no`,
+    `https://api.weatherapi.com/v1/current.json?key=f8f39e42a5384acc86121758230509&q=${input}&aqi=no`,
     { mode: "cors" },
   );
   return api.json();
